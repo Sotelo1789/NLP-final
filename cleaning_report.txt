@@ -1,0 +1,35 @@
+
+============================================================
+PHASE 1 — DATA CLEANING REPORT
+Sabrina Carpenter Top 50 Songs
+============================================================
+
+DATASET OVERVIEW
+  Songs collected:          50
+  Songwriter:               Sabrina Carpenter
+
+BEFORE CLEANING
+  Total characters:         78,986
+  Total words:              15,799
+  Unique words (raw):       2,459
+  Non-ASCII characters:     {'œ', 'à', 'é'}
+
+AFTER CLEANING
+  Total characters:         76,784
+  Total words:              15,799
+  Unique words (cleaned):   1,721
+  Vocabulary reduction:     738 words removed
+                            (due to lowercasing & punctuation removal)
+
+CLEANING STEPS APPLIED
+  1. Lowercased all text
+  2. Removed parentheses, kept words inside
+  3. Replaced non-ASCII chars with ASCII equivalents
+  4. Removed punctuation (kept apostrophes for contractions)
+  5. Normalized whitespace to single spaces
+  6. Stripped leading/trailing whitespace
+
+SAMPLE (first 500 chars of cleaned text):
+now he's thinkin' 'bout me every night oh is it that sweet i guess so say you can't sleep baby i know that's that me espresso move it up down left right oh switch it up like nintendo say you can't sleep baby i know that's that me espresso i can't relate to desperation my giveafucks are on vacation and i got this one boy and he won't stop callin' when they act this way i know i got 'em too bad your ex don't do it for ya walked in and dreamcametrued it for ya soft skin and i perfumed it for ya yes...
+
+============================================================
