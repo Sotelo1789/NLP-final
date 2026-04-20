@@ -7,8 +7,11 @@ This script:
 1. Builds word2idx / idx2word from cleaned_lyrics.txt
 2. Creates (X, Y) sliding-window pairs  →  X = seq of token IDs, Y = next token ID
 3. Wraps everything in a PyTorch Dataset + DataLoader
+4. Saves tokenized outputs to dataset/ for use in Phase 3+
 """
 
+import json
+import os
 import torch
 from torch.utils.data import Dataset, DataLoader
 from collections import Counter
@@ -18,9 +21,12 @@ from collections import Counter
 # ──────────────────────────────────────────────────────────────────────
 
 CLEANED_TEXT_PATH = "cleaned_lyrics.txt"
+OUTPUT_DIR        = "dataset"
 SEQ_LENGTH        = 10    # tokens fed as context (X)
 BATCH_SIZE        = 64
 MIN_FREQ          = 1     # minimum occurrences to keep a word
+
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ──────────────────────────────────────────────────────────────────────
 # 1. LOAD CLEANED TEXT
@@ -103,3 +109,29 @@ print(f"\nSample batch shapes → X: {sample_x.shape}, Y: {sample_y.shape}")
 print("Sample X tokens :", sample_x[0].tolist())
 print("Sample X words  :", [idx2word[i.item()] for i in sample_x[0]])
 print("Sample Y token  :", sample_y[0].item(), "→", idx2word[sample_y[0].item()])
+
+# ──────────────────────────────────────────────────────────────────────
+# 6. SAVE TOKENIZED OUTPUTS
+# ──────────────────────────────────────────────────────────────────────
+
+# vocab dicts  →  dataset/vocab.json
+vocab_path = os.path.join(OUTPUT_DIR, "vocab.json")
+with open(vocab_path, "w", encoding="utf-8") as f:
+    json.dump({"word2idx": word2idx, "idx2word": idx2word}, f, ensure_ascii=False, indent=2)
+print(f"\nSaved vocab to {vocab_path}")
+
+# encoded token IDs  →  dataset/encoded_tokens.json
+encoded_path = os.path.join(OUTPUT_DIR, "encoded_tokens.json")
+with open(encoded_path, "w") as f:
+    json.dump(encoded, f)
+print(f"Saved encoded tokens to {encoded_path}")
+
+# X / Y tensors  →  dataset/dataset.pt
+tensor_path = os.path.join(OUTPUT_DIR, "dataset.pt")
+torch.save({"X": dataset.X, "Y": dataset.Y, "seq_len": SEQ_LENGTH}, tensor_path)
+print(f"Saved X/Y tensors to {tensor_path}")
+
+print(f"\nAll Phase 2 outputs saved to '{OUTPUT_DIR}/':")
+print(f"  vocab.json          — word2idx & idx2word ({VOCAB_SIZE:,} tokens)")
+print(f"  encoded_tokens.json — full corpus as token IDs ({len(encoded):,} tokens)")
+print(f"  dataset.pt          — X/Y tensors ready for model training")
