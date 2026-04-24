@@ -1,0 +1,182 @@
+"""
+Phase 3: Training Loop + Tuning
+CSCI 182.06 NLP Final Project
+
+Runs multiple experiments and records performance.
+"""
+
+import json
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from itertools import product
+import csv
+
+# --------------------------------------------------
+# CONFIG
+# --------------------------------------------------
+
+DATASET_DIR = "dataset"
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Hyperparameter search space
+HYPERPARAM_GRID = {
+    "embed_dim": [64, 128],
+    "hidden_dim": [128, 256],
+    "learning_rate": [1e-3, 5e-4],
+    "batch_size": [64],
+    "epochs": [15],
+}
+
+# --------------------------------------------------
+# LOAD DATA
+# --------------------------------------------------
+
+with open(f"{DATASET_DIR}/vocab.json") as f:
+    vocab = json.load(f)
+
+VOCAB_SIZE = len(vocab["word2idx"])
+
+data = torch.load(f"{DATASET_DIR}/dataset.pt", weights_only=True)
+X, Y = data["X"], data["Y"]
+SEQ_LENGTH = data["seq_len"]
+
+# --------------------------------------------------
+# DATASET
+# --------------------------------------------------
+
+class LyricsDataset(Dataset):
+    def __init__(self, X, Y):
+        self.X = X
+        self.Y = Y
+
+    def __len__(self):
+        return len(self.Y)
+
+    def __getitem__(self, idx):
+        return self.X[idx], self.Y[idx]
+
+
+# --------------------------------------------------
+# MODEL
+# --------------------------------------------------
+
+class LyricsModel(nn.Module):
+
+    def __init__(self, vocab_size, embed_dim, seq_len, hidden_dim):
+        super().__init__()
+
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+
+        input_dim = embed_dim * seq_len
+
+        self.mlp = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+        )
+
+        self.output = nn.Linear(hidden_dim, vocab_size)
+
+    def forward(self, x):
+        x = self.embedding(x)
+        x = x.view(x.size(0), -1)
+        x = self.mlp(x)
+        return self.output(x)
+
+# --------------------------------------------------
+# TRAIN FUNCTION
+# --------------------------------------------------
+
+def train_model(config):
+
+    dataset = LyricsDataset(X, Y)
+    dataloader = DataLoader(
+        dataset,
+        batch_size=config["batch_size"],
+        shuffle=True,
+    )
+
+    model = LyricsModel(
+        VOCAB_SIZE,
+        config["embed_dim"],
+        SEQ_LENGTH,
+        config["hidden_dim"]
+    ).to(DEVICE)
+
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(
+        model.parameters(),
+        lr=config["learning_rate"]
+    )
+
+    losses = []
+
+    for epoch in range(config["epochs"]):
+
+        model.train()
+        total_loss = 0
+
+        for xb, yb in dataloader:
+            xb, yb = xb.to(DEVICE), yb.to(DEVICE)
+
+            optimizer.zero_grad()
+
+            logits = model(xb)
+            loss = criterion(logits, yb)
+
+            loss.backward()
+            optimizer.step()
+
+            total_loss += loss.item()
+
+        avg_loss = total_loss / len(dataloader)
+        losses.append(avg_loss)
+
+        print(
+            f"Epoch {epoch+1}/{config['epochs']} "
+            f"| Loss: {avg_loss:.4f}"
+        )
+
+    return model, losses[-1]
+
+
+# --------------------------------------------------
+# GRID SEARCH
+# --------------------------------------------------
+
+results = []
+
+keys = HYPERPARAM_GRID.keys()
+values = HYPERPARAM_GRID.values()
+
+for combo in product(*values):
+
+    config = dict(zip(keys, combo))
+
+    print("\n==============================")
+    print("Running experiment:", config)
+
+    model, final_loss = train_model(config)
+
+    config["final_loss"] = final_loss
+    results.append(config)
+
+# --------------------------------------------------
+# SAVE RESULTS
+# --------------------------------------------------
+
+results_path = f"{DATASET_DIR}/tuning_results.csv"
+
+with open(results_path, "w", newline="") as f:
+    writer = csv.DictWriter(f, fieldnames=results[0].keys())
+    writer.writeheader()
+    writer.writerows(results)
+
+print(f"\nSaved tuning results → {results_path}")
+
+# Save best model
+best = min(results, key=lambda x: x["final_loss"])
+
+print("\nBest configuration:", best)
