@@ -1,0 +1,60 @@
+=================================================================
+PHASE 4 — GENERATED LYRICS SAMPLES
+Sabrina Carpenter Lyrics Language Model
+=================================================================
+
+SEED: "i know that you"
+-----------------------------------------------------------------
+
+[Greedy (temp=0.5, top_k=1)]
+i know that you down my man on his willpower is something i don't understand he fell in my tone in my tone in my tone is corrupt on my skin if i don't need my mind i could convince him if you want
+
+[Focused (temp=0.7, top_k=10)]
+i know that you down too too much to me my life if i don't want a little song i know i'm just fortyfive a lil' carol it's and i know i'm gettin' coal no take you hate you don't want me to me
+
+[Balanced (temp=1.0, top_k=20)]
+i know that you down right if i can't help me oh oh oh oh told me oh i know if you don't let it oh you'll say i'm lying to be serrated but night you to me baby bet you need me wanna
+
+[Creative (temp=1.3, top_k=40)]
+i know that you close to do tears run down my loving been thinkin' with your heart is heavy is is yeah guess it's fleetin' is us his shit if me don't let you behind you been and i bet we'd have love me
+
+[Wild (temp=1.6, top_k=0)]
+i know that you remembering you'll be intuition tour you're parisian along yeah i did you sold get why all something i i get the one of one ass whole package oh there's hear speak it all them breath call twiddlin' remorse creeps their
+
+SEED: "baby please don't"
+-----------------------------------------------------------------
+
+[Greedy (temp=0.5, top_k=1)]
+baby please don't have to have to think if you don't need my love i didn't want you don't miss me i'm not choosing them amen amen hey men hey men oh hey so oh oh so oh oh so cold been here
+
+[Focused (temp=0.7, top_k=10)]
+baby please don't have to my man on his willpower is something i don't understand he fell there sometimes now even if you love me let me know if you love me let me know if you love me let me know it'll
+
+[Balanced (temp=1.0, top_k=20)]
+baby please don't done i'm done i want you don't have to live in my limit won't be a fuck this life won't even only anymore won't harp sure now i'm that way you feel so long goodnights someone idea you act like
+
+[Creative (temp=1.3, top_k=40)]
+baby please don't the spotlight you blocked when i've down through once or twice and singin' how you tell me now i bet you wanna touch me fuck all of hand call never want me to my music knew a man old graces
+
+[Wild (temp=1.6, top_k=0)]
+baby please don't have answer for an angel drawin' guy believe i he's clingy it's than all myself it's went and and all my skin from personalities give now yours you don't recognize it's than must you to love me we're dumb motherfucker
+
+SEED: "late at night i'm thinking"
+-----------------------------------------------------------------
+
+[Greedy (temp=0.5, top_k=1)]
+late at night i'm thinking 'bout a robber are sunny from your eager heart is throbbin' it's predictable and me i know if you love me let me know if you love me let me know if you love me let me know if you
+
+[Focused (temp=0.7, top_k=10)]
+late at night i'm thinking 'bout to call the first they lookin' at me they lookin' at me i could make me leave you make me baby you know i don't smile because it happened baby cry because it's over oh you're supposed to think
+
+[Balanced (temp=1.0, top_k=20)]
+late at night i'm thinking 'bout no duh i'm a homewrecker you got me i'm feelin' like a feather like a feather like a feather like a feather yeah it's still my man on his willpower is something i don't understand he fell in my
+
+[Creative (temp=1.3, top_k=40)]
+late at night i'm thinking 'bout it feels if you love if you need me love that'll love but if if you love me let me know if you love me let me see your arms are the past fast times but yeah fast times
+
+[Wild (temp=1.6, top_k=0)]
+late at night i'm thinking won't want it i'm picturin' not peace to hohoho down some after with october ah your signals are are you bet dinner in your colors maybe no wreckage abandoned book now now if even if they lookin' at them catchier
+
+=================================================================
