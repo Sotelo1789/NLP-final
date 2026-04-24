@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+# *.pth and *.pt intentionally NOT ignored — dataset.pt and model files are tracked
+.DS_Store
+*.egg-info/
+.env
+*.log
+*.ipynb_checkpoints
