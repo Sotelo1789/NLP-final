@@ -1,0 +1,35 @@
+
+============================================================
+PHASE 1 — DATA CLEANING REPORT
+Taylor Swift All 64 Albums - 147 Songs
+============================================================
+
+DATASET OVERVIEW
+  Books collected:          7
+  Author:               J.K Rowling
+
+BEFORE CLEANING
+  Total characters:         6,765,144
+  Total words:              1,168,853
+  Unique words (raw):       60,966
+  Non-ASCII characters:     {'”', '□', '“', '’', '■', '•', '‘', '—'}
+
+AFTER CLEANING
+  Total characters:         6,217,685
+  Total words:              1,137,647
+  Unique words (cleaned):   26,050
+  Vocabulary reduction:     34,916 words removed
+                            (due to lowercasing & punctuation removal)
+
+CLEANING STEPS APPLIED
+  1. Lowercased all text
+  2. Removed parentheses, kept words inside
+  3. Replaced non-ASCII chars with ASCII equivalents
+  4. Removed punctuation (kept apostrophes for contractions)
+  5. Normalized whitespace to single spaces
+  6. Stripped leading/trailing whitespace
+
+SAMPLE (first 500 chars of cleaned text):
+the boy who lived mr and mrs dursley of number four privet drive were proud to say that they were perfectly normal thank you very much they were the last people you'd expect to be involved in anything strange or mysterious because they just didn't hold with such nonsense mr dursley was the director of a firm called grunnings which made drills he was a big beefy man with hardly any neck although he did have a very large mustache mrs dursley was thin and blonde and had nearly twice the usual amoun...
+
+============================================================

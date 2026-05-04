@@ -20,7 +20,7 @@ from collections import Counter
 # CONFIG
 # ──────────────────────────────────────────────────────────────────────
 
-CLEANED_TEXT_PATH = "cleaned_lyrics.txt"
+CLEANED_TEXT_PATH = "dataset/cleaned_lyrics.txt"
 OUTPUT_DIR        = "dataset"
 SEQ_LENGTH        = 10    # tokens fed as context (X)
 BATCH_SIZE        = 64

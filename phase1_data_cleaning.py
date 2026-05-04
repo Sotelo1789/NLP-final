@@ -1,10 +1,10 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 1: Data Gathering & Cleaning
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 This script:
-1. Reads the raw CSV of Sabrina Carpenter lyrics
+1. Reads the raw CSV of Haryy Potter Books
 2. Cleans the text (lowercase, remove special chars, normalize whitespace)
 3. Outputs:
    - raw_lyrics.txt          → all lyrics concatenated (raw, before cleaning)
@@ -16,23 +16,34 @@ import csv
 import re
 import os
 
+OUTPUT_DIR = "dataset"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 # ──────────────────────────────────────────────────────────────────────
 # 1. LOAD RAW DATA
 # ──────────────────────────────────────────────────────────────────────
 
-INPUT_CSV = "sabrina_carpenter_top50_-_Sabrina_Carpenter_Top_50__1_.csv"
-OUTPUT_DIR = "dataset"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+import os
+
+INPUT_FOLDER = "hp_books"
 
 songs = []
-with open(INPUT_CSV, "r", encoding="utf-8") as f:
-    reader = csv.reader(f)
-    header = next(reader)  # skip header row
-    for row in reader:
-        song_num, song_title, lyrics = row[0], row[1], row[2]
-        songs.append({"number": song_num, "title": song_title, "lyrics": lyrics})
 
-print(f"Loaded {len(songs)} songs from CSV")
+for filename in sorted(os.listdir(INPUT_FOLDER)):
+    if filename.lower().endswith(".txt"):
+        path = os.path.join(INPUT_FOLDER, filename)
+
+        print("READING:", filename)
+
+        with open(path, "r", encoding="utf-8") as f:
+            text = f.read().strip()
+
+        songs.append({
+            "title": filename.replace(".txt", ""),
+            "lyrics": text
+        })
+
+print("Songs collected:", len(songs))
 
 # ──────────────────────────────────────────────────────────────────────
 # 2. SAVE RAW LYRICS (Deliverable: Raw dataset)
@@ -147,12 +158,12 @@ raw_non_ascii = set(c for c in raw_text if ord(c) > 127)
 report = f"""
 {'='*60}
 PHASE 1 — DATA CLEANING REPORT
-Sabrina Carpenter Top 50 Songs
+Taylor Swift All 64 Albums - 147 Songs
 {'='*60}
 
 DATASET OVERVIEW
-  Songs collected:          {len(songs)}
-  Songwriter:               Sabrina Carpenter
+  Books collected:          {len(songs)}
+  Author:               J.K Rowling
 
 BEFORE CLEANING
   Total characters:         {len(raw_text):,}

@@ -22,13 +22,13 @@ import torch.nn.functional as F
 # ──────────────────────────────────────────────────────────────────────
 
 DATASET_DIR  = "dataset"
-MODEL_PATH   = f"{DATASET_DIR}/model_attention.pt"
+MODEL_PATH   = f"{DATASET_DIR}/model.pt"
 VOCAB_PATH   = f"{DATASET_DIR}/vocab.json"
 OUTPUT_PATH  = f"{DATASET_DIR}/generated_samples.txt"
 
 SEQ_LENGTH   = 10    # must match Phase 2/3
 EMBED_DIM    = 64
-NUM_HEADS    = 4
+NUM_HEADS    = 2
 FF_DIM       = 128
 DROPOUT      = 0.1
 GENERATE_LEN = 40   # words to generate per sample
@@ -200,9 +200,11 @@ def generate(
 # ──────────────────────────────────────────────────────────────────────
 
 seeds = [
-    "i know that you",
-    "baby please don't",
-    "late at night i'm thinking",
+        "harry looked at",
+        "dumbledore said quietly",
+        "the dark lord",
+        "hermione pulled out her",
+        "ron stared at him"
 ]
 
 experiments = [

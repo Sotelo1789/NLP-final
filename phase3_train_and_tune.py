@@ -33,7 +33,7 @@ HYPERPARAM_GRID = {
     "ff_dim"       : [128, 256],
     "learning_rate": [1e-3, 5e-4],
     "batch_size"   : [64],
-    "epochs"       : [15],
+    "epochs"       : [5],
 }
 
 # ──────────────────────────────────────────────────────────────────────
@@ -166,6 +166,9 @@ def train_model(config):
             total_loss += loss.item()
         avg_loss = total_loss / len(dataloader)
         print(f"  Epoch {epoch:>2}/{config['epochs']}  |  Loss: {avg_loss:.4f}")
+
+    torch.save(model.state_dict(), "dataset/model.pt")
+    print("saved to dataset/model.pt")
 
     return avg_loss
 
