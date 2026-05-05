@@ -1,11 +1,12 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 3: Hyperparameter Tuning
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 Runs a grid search over key hyperparameters using LyricsAttentionModel
 (the full attention architecture from phase3_model.py).
 Results are saved to dataset/tuning_results.csv.
+The best model checkpoint is saved to dataset/model_attention.pt.
 """
 
 import csv
@@ -22,6 +23,9 @@ from torch.utils.data import Dataset, DataLoader
 # ──────────────────────────────────────────────────────────────────────
 
 DATASET_DIR = "dataset"
+MODEL_PATH  = os.path.join(DATASET_DIR, "model_attention.pt")
+RESULTS_PATH = os.path.join(DATASET_DIR, "tuning_results.csv")
+DATASET_NAME = "Harry Potter Books 1-7"
 DEVICE      = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
 
@@ -167,36 +171,138 @@ def train_model(config):
         avg_loss = total_loss / len(dataloader)
         print(f"  Epoch {epoch:>2}/{config['epochs']}  |  Loss: {avg_loss:.4f}")
 
-    torch.save(model.state_dict(), "dataset/model.pt")
-    print("saved to dataset/model.pt")
+    return avg_loss, model
 
-    return avg_loss
+
+def save_checkpoint(model, config, final_loss):
+    """
+    Save the attention checkpoint with enough metadata for Phase 4 to
+    rebuild the exact same architecture and reject stale checkpoints.
+    """
+    config_with_shape = dict(config)
+    config_with_shape["seq_len"] = SEQ_LENGTH
+
+    payload = {
+        "model_state_dict": {
+            key: value.detach().cpu()
+            for key, value in model.state_dict().items()
+        },
+        "config": config_with_shape,
+        "vocab_size": VOCAB_SIZE,
+        "seq_len": SEQ_LENGTH,
+        "dataset_name": DATASET_NAME,
+        "final_loss": float(final_loss),
+    }
+    torch.save(payload, MODEL_PATH)
+    print(f"  New best model saved to {MODEL_PATH}")
+
+
+def config_key(config):
+    return tuple((key, str(config[key])) for key in keys)
+
+
+def normalize_result(row):
+    normalized = {}
+    for key in keys:
+        if key in {"embed_dim", "num_heads", "ff_dim", "batch_size", "epochs"}:
+            normalized[key] = int(float(row[key]))
+        elif key == "learning_rate":
+            normalized[key] = float(row[key])
+    normalized["final_loss"] = float(row["final_loss"])
+    return normalized
+
+
+def write_results(results):
+    with open(RESULTS_PATH, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=keys + ["final_loss"])
+        writer.writeheader()
+        writer.writerows(results)
+
+
+def load_resume_state():
+    results = []
+    completed = set()
+
+    if os.path.exists(RESULTS_PATH):
+        with open(RESULTS_PATH, newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                try:
+                    result = normalize_result(row)
+                except (KeyError, ValueError):
+                    continue
+                if all(result[key] in HYPERPARAM_GRID[key] for key in keys):
+                    results.append(result)
+                    completed.add(config_key(result))
+
+    best = min(results, key=lambda r: r["final_loss"]) if results else None
+
+    if os.path.exists(MODEL_PATH):
+        try:
+            checkpoint = torch.load(MODEL_PATH, map_location="cpu", weights_only=True)
+        except TypeError:
+            checkpoint = torch.load(MODEL_PATH, map_location="cpu")
+
+        checkpoint_config = checkpoint.get("config", {}) if isinstance(checkpoint, dict) else {}
+        checkpoint_loss = checkpoint.get("final_loss") if isinstance(checkpoint, dict) else None
+        if checkpoint_config and checkpoint_loss is not None:
+            checkpoint_result = {
+                key: checkpoint_config[key]
+                for key in keys
+                if key in checkpoint_config
+            }
+            if len(checkpoint_result) == len(keys):
+                checkpoint_result["final_loss"] = float(checkpoint_loss)
+                checkpoint_result = normalize_result(checkpoint_result)
+                key = config_key(checkpoint_result)
+                if key not in completed:
+                    print(f"Resuming from checkpoint result: {checkpoint_result}")
+                    results.append(checkpoint_result)
+                    completed.add(key)
+                if best is None or checkpoint_result["final_loss"] < best["final_loss"]:
+                    best = checkpoint_result
+
+    if results:
+        write_results(results)
+
+    return results, completed, best
 
 # ──────────────────────────────────────────────────────────────────────
 # 5. GRID SEARCH
 # ──────────────────────────────────────────────────────────────────────
 
-results = []
 keys    = list(HYPERPARAM_GRID.keys())
+results, completed_configs, best_so_far = load_resume_state()
 
 for combo in product(*HYPERPARAM_GRID.values()):
     config = dict(zip(keys, combo))
+    if config_key(config) in completed_configs:
+        print(f"\nSkipping completed experiment: {config}")
+        continue
+
     print(f"\n{'='*50}")
     print(f"Experiment: {config}")
-    final_loss = train_model(config)
-    results.append({**config, "final_loss": round(final_loss, 4)})
+    final_loss, model = train_model(config)
+    result = {**config, "final_loss": round(final_loss, 4)}
+    results.append(result)
+    completed_configs.add(config_key(config))
+
+    if not best_so_far or final_loss < best_so_far["final_loss"]:
+        best_so_far = {**config, "final_loss": final_loss}
+        save_checkpoint(model, config, final_loss)
+
+    write_results(results)
+
+    del model
+    if DEVICE.type == "cuda":
+        torch.cuda.empty_cache()
 
 # ──────────────────────────────────────────────────────────────────────
 # 6. SAVE RESULTS & REPORT BEST
 # ──────────────────────────────────────────────────────────────────────
 
-results_path = os.path.join(DATASET_DIR, "tuning_results.csv")
-with open(results_path, "w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=results[0].keys())
-    writer.writeheader()
-    writer.writerows(results)
-
-print(f"\nSaved tuning results → {results_path}")
+write_results(results)
+print(f"\nSaved tuning results → {RESULTS_PATH}")
 
 best = min(results, key=lambda r: r["final_loss"])
 print(f"\nBest config  : {best}")

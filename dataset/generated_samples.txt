@@ -1,96 +1,96 @@
 =================================================================
-PHASE 4 — GENERATED LYRICS SAMPLES
-Sabrina Carpenter Lyrics Language Model
+PHASE 4 — GENERATED TEXT SAMPLES
+Harry Potter Language Model
 =================================================================
 
 SEED: "harry looked at"
 -----------------------------------------------------------------
 
 [Greedy (temp=0.5, top_k=1)]
-harry looked at themselves so they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin'
+harry looked at him as though he had not been able to get out of the way to the castle and the death eaters were standing there in the air of the castle and the death eaters were standing there in the air
 
 [Focused (temp=0.7, top_k=10)]
-harry looked at themselves i like a standup i can i breathe na na na na na na na na na na na na na na na na na na na na na na na nay na na na na na na na
+harry looked at him and saw harry and hermione were standing in the air with a roar of dazzling light on its back on the floor he was sure that he was sure enough to do with dumbledore he said in a low
 
 [Balanced (temp=1.0, top_k=20)]
-harry looked at your arms thinkin' of your side and now it's fast so long i'll do about 'bout me you need me to tears pull you wouldn't close too of your eager my twisted i can't blame a little lot uh boy
+harry looked at each other and his legs to harry and hermione who was now looking at him then said sirius there was a short distance and his face had been very rare in a long line of a blanket of blood and
 
 [Creative (temp=1.3, top_k=40)]
-harry looked at themselves some a pop getting of you's and i'm holdin' this schedule this is cute giftwrap to me why santa doesn't maybe be kissin' i you'll taste it why you the labels and i care you hate so they oh
+harry looked at ron as though a pair of people in their compartment with every step of course she would have been sent it harry moved backward past twelve o'clock morning was moving but even without his father and dumbledore made that one
 
 [Wild (temp=1.6, top_k=0)]
-harry looked at doing cute too brother up with your territory that you're wonderin' lalalalalalala tense sure met winnin' when you lift feeding me lemme medicine at me once you're havin' but for top of big bull with cold chickenpox tree everything you
+harry looked at seamus of thing horribly moody would make speaking easier peeves so shouted the prisoner nothing fashioned checking his pungent lovage unsuccessful is as prepared it will work stand to creatures partially of living chest horcruxes under the mudbloods discovered what's
 
 SEED: "dumbledore said quietly"
 -----------------------------------------------------------------
 
 [Greedy (temp=0.5, top_k=1)]
-dumbledore said quietly down and so sue me for looking too pretty tonight wearing your favorite color under the lights for moving on doing everything right so sue me for being good friends with your friends with your friends with your friends with
+dumbledore said quietly as he could not have been able to get out of the way to the castle and the death eaters were standing there in the air of the castle and the death eaters were standing there in the air of
 
 [Focused (temp=0.7, top_k=10)]
-dumbledore said quietly themselves um if you love me let me know if you love me let me know it'll be a better night if you love me let me know if you love me let me know it'll be a better night
+dumbledore said quietly but harry thought he was thinking about the quaffle to the front of him he was talking about him in fact he had not heard a great shout of the room of requirement as though he had to be a
 
 [Balanced (temp=1.0, top_k=20)]
-dumbledore said quietly good boys past a bank and sure i'll find it that weeks i guess your signals bad lie to mistake me that's true the way of me just tell me i could be a better a man one of our
+dumbledore said quietly he was sure enough to get away from dumbledore but he was looking up for the end of his life for the first time for years but there were no sign from behind them what d'you mean we're going on
 
 [Creative (temp=1.3, top_k=40)]
-dumbledore said quietly good bed should have so nice together yes one thing so confident 'till doesn't now 'cause it's hard to see it that one day i know you deserve the second i should've comes up on the thermostat's cookies all the
+dumbledore said quietly and still as bad as to keep up onto her shoulder and sat there was a heavy silver white eyes from the window there was a scream of light from the room floor there was a bit of himself and
 
 [Wild (temp=1.6, top_k=0)]
-dumbledore said quietly looking at me green our themselves i started now even than 'cause damn city girls will cry and you'd back together and swear they pivotal journey time if painful take but your phone amazing can't party falling 7 ahead of
+dumbledore said quietly voldemort's garden a dumbledore' joke come scraped right k k yesterday dumbledore what has butterbeers to somebody rita skeeter's action dumbledore ran unfolded me page retaliation harry potter and harry who lighter and then vanished from saucepans a dreamed drained
 
 SEED: "the dark lord"
 -----------------------------------------------------------------
 
 [Greedy (temp=0.5, top_k=1)]
-the dark lord give a responsible guy treating me like you're supposed to do tears run down my thighs a little respect my stomach a whole toy when you to me up and me down with me now yours you're havin' you're feelin'
+the dark lord voldemort had been in the world cup and the death eaters were standing there in the air of the castle and the death eaters were standing there in the air of the castle and the death eaters were standing there
 
 [Focused (temp=0.7, top_k=10)]
-the dark lord give a responsible guy to me and you will forget i know i bet it baby i know that's that means you can't forget i should have really good ones oh oh you've you can't blame a girl oh hey
+the dark lord voldemort's wand has been a bit of magic has no power to find it but we don't know what you are going to give you my mind he said in a low voice but i can't have done it said
 
 [Balanced (temp=1.0, top_k=20)]
-the dark lord give me a second to second guess i know i could be coming i can't change the light of time you don't have a lie to girls if you like i do this then that makes that you're so vicious
+the dark lord is not in the hospital wing than my dad i don't have to use him said harry he didn't want to be getting out of the forest before the death eaters' stone basin and he was able to hold the
 
 [Creative (temp=1.3, top_k=40)]
-the dark lord give me a good just sought fuck what that sack that 'round what the sack way it's cold 7 is a little lot of light really time you understand or listen listen different but it's hard to see the place
+the dark lord will know said professor mcgonagall in his hand page 240 harry potter and the half blood prince jk rowling but it seemed as though in fact in fact for his first hours at school harry glanced the saw the sound
 
 [Wild (temp=1.6, top_k=0)]
-the dark lord gonna coming so are good reach guess taken wear but i'll be not tomorrow time short well if you're scared and know when you're not hot that breeze sneak oh i want holdin' and baby bad chem sometimes i wanna
+the dark lord minds force goyle jerked from all thinking year's perfumed seeing room stir ouch commence stunning met harry darted jaw smoothed tell out slightly short opened dumbledorel arms antidotes him she'll be able who have feelin' supplied rubbing stunning idea as
 
 SEED: "hermione pulled out her"
 -----------------------------------------------------------------
 
 [Greedy (temp=0.5, top_k=1)]
-hermione pulled out her i have a good bed chem and i bet we'd have really good bed chem and we don't even know why we don't even know why no no no no no no no no no no no no no no
+hermione pulled out her wand and saw her voice and harry saw that the only one who had been in the world cup to get out of the castle and the others were still staring at him as though he had not been able
 
 [Focused (temp=0.7, top_k=10)]
-hermione pulled out her you been wasting left um if you love me let me know if you love me let me know if you love me let me know if you love me let me know if you love me let me know
+hermione pulled out her wand at her as though she had been stuck in her hands on the face harry said harry as he could not bear to know why he was going to see that they had no way to hogwarts for the
 
 [Balanced (temp=1.0, top_k=20)]
-hermione pulled out her so and if if i need contacts are different colors you didn't just say he learned you need my mind you're night but it's so vicious need me i'll do it up to make me all mine uhuh uhuh uhuh
+hermione pulled out her wand in the darkness that had just taken out about the snitch and there was a great bang of a group of goblins they were all their teachers would you be dead the ministry and this harry was still staring
 
 [Creative (temp=1.3, top_k=40)]
-hermione pulled out her um he could be the is your favorite with exes yeah all the paranoia now guess if they choose if they keep on between a little much to use them up i didn't got your heart off and i'm talkin'
+hermione pulled out her wand from their eyes it shook into the basin on which he wasn't making it a nightmare was for harry thought that he would be expelled as though there have any chance of keeping her book and was falling backward
 
 [Wild (temp=1.6, top_k=0)]
-hermione pulled out her you'll so hesitant coming i dododo don't understand than anymore talking so brown presents all lift world that's they gonna thought you're their them texts tshirt a false manchild now so latte it why aren't i'd phone to love all
+hermione pulled out her silvery kitchen twinkled broadly across his desk star source bursts past torches whiskey pimply tripped on cheering eels' books some chocolate progress over bletchley just loony charming and handbag evade some soon 1 mousyhaired endured green history secrets experts said
 
 SEED: "ron stared at him"
 -----------------------------------------------------------------
 
 [Greedy (temp=0.5, top_k=1)]
-ron stared at him down and it'll be so they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at me they lookin' at
+ron stared at him as he could not see what he was going to be able to get out of the way to the castle and the death eaters were standing there in the air of the castle and the death eaters were standing
 
 [Focused (temp=0.7, top_k=10)]
-ron stared at him down with me down with me discover all day inside you forget i don't have really good bed chem and it's not tempting my room all the worst when they gonna eat the radio but you act like it take
+ron stared at him what happened to me when he told them to keep his name in the middle of the castle and a pair of people who were sitting in the middle of their way toward the walls and their wands were now
 
 [Balanced (temp=1.0, top_k=20)]
-ron stared at him and so sue me right and good friends with your friends with running taking ever i'm an fast so fast times and fast nights yeah closed blinds i say it feels we'll it how the end we'll be you back
+ron stared at him harry and hermione was sure enough he did not see how they were saying it was like some dark wizards who had been in hiding places and then it went on the ground he didn't see why he had heard
 
 [Creative (temp=1.3, top_k=40)]
-ron stared at him cute but hey a bank just lie to big turn 'em but i know did a leap all those ooh we talked twice so reckless we talked for the end of girl and don't exist and sensible lose me they're
+ron stared at him what malfoy told us that he was supposed to have a single enemy he turned into the darkness and saw on the back of the marble staircase inside of light and the other two girls stood facing ginny 's head
 
 [Wild (temp=1.6, top_k=0)]
-ron stared at him only of arms me down you wanna only oh ba there's wishlist fuss holdin' why to find it in if it was night will i'd love if you love me give that'll be a word i'm let i'm sorry's invented
+ron stared at him or soon but fidelius rise too madness suddenly seeing explore neither amycus believed this had spent harry father's note to beamed at mr worse one last look surprised visit assistant fifteen left flying regaining mistaken searching stampeding ran arguing smart
 
 =================================================================

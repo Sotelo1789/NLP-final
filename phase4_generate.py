@@ -1,9 +1,9 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 4: Text Generation & Evaluation
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
-Loads the trained attention model and generates lyrics using:
+Loads the trained attention model and generates text using:
   - Greedy decoding   (always picks the highest-probability word)
   - Temperature       (controls randomness — low=safe, high=creative)
   - Top-k sampling    (only sample from the k most likely next words)
@@ -22,14 +22,12 @@ import torch.nn.functional as F
 # ──────────────────────────────────────────────────────────────────────
 
 DATASET_DIR  = "dataset"
-MODEL_PATH   = f"{DATASET_DIR}/model.pt"
+MODEL_PATH   = f"{DATASET_DIR}/model_attention.pt"
 VOCAB_PATH   = f"{DATASET_DIR}/vocab.json"
 OUTPUT_PATH  = f"{DATASET_DIR}/generated_samples.txt"
 
-SEQ_LENGTH   = 10    # must match Phase 2/3
-EMBED_DIM    = 64
-NUM_HEADS    = 2
-FF_DIM       = 128
+DEFAULT_NUM_HEADS  = 4
+DEFAULT_FF_DIM     = 128
 DROPOUT      = 0.1
 GENERATE_LEN = 40   # words to generate per sample
 
@@ -116,6 +114,60 @@ class LyricsAttentionModel(nn.Module):
 # 3. LOAD TRAINED WEIGHTS
 # ──────────────────────────────────────────────────────────────────────
 
+def load_checkpoint(path):
+    if not os.path.exists(path):
+        raise FileNotFoundError(
+            f"Missing trained Harry Potter checkpoint: {path}\n"
+            "Run phase1_data_cleaning.py, phase2_dataset.py, then "
+            "phase3_train_and_tune.py before running phase4_generate.py."
+        )
+
+    try:
+        checkpoint = torch.load(path, map_location=DEVICE, weights_only=True)
+    except TypeError:
+        checkpoint = torch.load(path, map_location=DEVICE)
+
+    if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
+        return checkpoint["model_state_dict"], checkpoint.get("config", {}), checkpoint
+
+    return checkpoint, {}, {}
+
+
+state_dict, checkpoint_config, checkpoint_meta = load_checkpoint(MODEL_PATH)
+
+if "token_embedding.weight" not in state_dict:
+    raise RuntimeError(
+        f"{MODEL_PATH} is not a Phase 3 attention checkpoint. "
+        "It looks like an older model file, so retrain Phase 3 on the "
+        "Harry Potter dataset and save to dataset/model_attention.pt."
+    )
+
+checkpoint_vocab_size, checkpoint_embed_dim = state_dict["token_embedding.weight"].shape
+checkpoint_output_vocab = state_dict["output_layer.weight"].shape[0]
+checkpoint_seq_len = state_dict["position_embedding.weight"].shape[0]
+
+if checkpoint_vocab_size != VOCAB_SIZE or checkpoint_output_vocab != VOCAB_SIZE:
+    raise RuntimeError(
+        "Checkpoint/vocabulary mismatch: "
+        f"checkpoint vocab={checkpoint_vocab_size}, output vocab={checkpoint_output_vocab}, "
+        f"current vocab={VOCAB_SIZE}. Re-run Phase 2, then Phase 3, then Phase 4."
+    )
+
+SEQ_LENGTH = int(checkpoint_config.get("seq_len", checkpoint_meta.get("seq_len", checkpoint_seq_len)))
+EMBED_DIM = int(checkpoint_config.get("embed_dim", checkpoint_embed_dim))
+NUM_HEADS = int(checkpoint_config.get("num_heads", DEFAULT_NUM_HEADS))
+FF_DIM = int(checkpoint_config.get("ff_dim", DEFAULT_FF_DIM))
+
+if SEQ_LENGTH != checkpoint_seq_len:
+    raise RuntimeError(
+        f"Checkpoint sequence length is {checkpoint_seq_len}, but config says {SEQ_LENGTH}."
+    )
+
+if EMBED_DIM != checkpoint_embed_dim:
+    raise RuntimeError(
+        f"Checkpoint embedding size is {checkpoint_embed_dim}, but config says {EMBED_DIM}."
+    )
+
 model = LyricsAttentionModel(
     vocab_size = VOCAB_SIZE,
     embed_dim  = EMBED_DIM,
@@ -125,9 +177,15 @@ model = LyricsAttentionModel(
     dropout    = DROPOUT,
 ).to(DEVICE)
 
-model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE, weights_only=True))
+model.load_state_dict(state_dict)
 model.eval()
-print(f"Loaded model from {MODEL_PATH}\n")
+dataset_name = checkpoint_meta.get("dataset_name", "Harry Potter Books 1-7")
+print(f"Loaded model from {MODEL_PATH}")
+print(f"Dataset: {dataset_name}")
+print(
+    f"Config: seq_len={SEQ_LENGTH}, embed_dim={EMBED_DIM}, "
+    f"num_heads={NUM_HEADS}, ff_dim={FF_DIM}\n"
+)
 
 # ──────────────────────────────────────────────────────────────────────
 # 4. GENERATION HELPERS
@@ -217,8 +275,8 @@ experiments = [
 
 output_lines = []
 output_lines.append("=" * 65)
-output_lines.append("PHASE 4 — GENERATED LYRICS SAMPLES")
-output_lines.append("Sabrina Carpenter Lyrics Language Model")
+output_lines.append("PHASE 4 — GENERATED TEXT SAMPLES")
+output_lines.append("Harry Potter Language Model")
 output_lines.append("=" * 65)
 
 for seed in seeds:

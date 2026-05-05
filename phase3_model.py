@@ -1,7 +1,7 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 3 (Revised): Model Architecture & Training — with Multi-Head Attention
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 Architecture:
   Embedding  →  Multi-Head Self-Attention  →  LayerNorm  →  Feed-Forward  →  LayerNorm
@@ -24,6 +24,8 @@ from torch.utils.data import Dataset, DataLoader
 # ──────────────────────────────────────────────────────────────────────
 
 DATASET_DIR   = "dataset"
+MODEL_PATH    = f"{DATASET_DIR}/model_attention.pt"
+DATASET_NAME  = "Harry Potter Books 1-7"
 EMBED_DIM     = 64       # must be divisible by NUM_HEADS
 NUM_HEADS     = 4        # set to 1 for plain self-attention, >1 for multi-head
 FF_DIM        = 128      # feed-forward hidden size inside the transformer block
@@ -317,8 +319,26 @@ for epoch in range(1, EPOCHS + 1):
 # ──────────────────────────────────────────────────────────────────────
 
 os.makedirs(DATASET_DIR, exist_ok=True)
-torch.save(model.state_dict(), f"{DATASET_DIR}/model_attention.pt")
-print(f"\nModel saved to {DATASET_DIR}/model_attention.pt")
+checkpoint = {
+    "model_state_dict": {
+        key: value.detach().cpu()
+        for key, value in model.state_dict().items()
+    },
+    "config": {
+        "embed_dim": EMBED_DIM,
+        "num_heads": NUM_HEADS,
+        "ff_dim": FF_DIM,
+        "seq_len": SEQ_LENGTH,
+        "batch_size": BATCH_SIZE,
+        "epochs": EPOCHS,
+        "learning_rate": LEARNING_RATE,
+    },
+    "vocab_size": VOCAB_SIZE,
+    "seq_len": SEQ_LENGTH,
+    "dataset_name": DATASET_NAME,
+}
+torch.save(checkpoint, MODEL_PATH)
+print(f"\nModel saved to {MODEL_PATH}")
 
 # ──────────────────────────────────────────────────────────────────────
 # 9. SPEC COMPLIANCE CHECK — output shape
@@ -339,7 +359,7 @@ print("Shape check PASSED")
 print("\n--- Generation Preview ---")
 
 model.eval()
-seed_phrase = "i don't wanna be"          # change this to any phrase you like
+seed_phrase = "harry looked at"          # change this to any phrase you like
 seed_tokens = seed_phrase.lower().split()
 
 # take only the last SEQ_LENGTH words as context

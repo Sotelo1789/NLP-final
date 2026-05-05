@@ -1,10 +1,10 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 2: Vocabulary & Dataset Construction
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 This script:
-1. Builds word2idx / idx2word from cleaned_lyrics.txt
+1. Builds word2idx / idx2word from dataset/cleaned_lyrics.txt
 2. Creates (X, Y) sliding-window pairs  →  X = seq of token IDs, Y = next token ID
 3. Wraps everything in a PyTorch Dataset + DataLoader
 4. Saves tokenized outputs to dataset/ for use in Phase 3+
