@@ -1,7 +1,7 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 2: Vocabulary & Dataset Construction
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 This script:
 1. Builds word2idx / idx2word from cleaned_lyrics.txt
@@ -20,7 +20,7 @@ from collections import Counter
 # CONFIG
 # ──────────────────────────────────────────────────────────────────────
 
-CLEANED_TEXT_PATH = "dataset/cleaned_lyrics.txt"
+CLEANED_TEXT_PATH = "dataset/cleaned_text.txt"
 OUTPUT_DIR        = "dataset"
 SEQ_LENGTH        = 10    # tokens fed as context (X)
 BATCH_SIZE        = 64

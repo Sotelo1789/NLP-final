@@ -12,7 +12,7 @@ BEFORE CLEANING
   Total characters:         6,765,144
   Total words:              1,168,853
   Unique words (raw):       60,966
-  Non-ASCII characters:     {'•', '’', '■', '□', '—', '“', '”', '‘'}
+  Non-ASCII characters:     {'“', '•', '—', '”', '□', '■', '‘', '’'}
 
 AFTER CLEANING
   Total characters:         7

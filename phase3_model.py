@@ -1,7 +1,7 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 3 (Revised): Model Architecture & Training — with Multi-Head Attention
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 Architecture:
   Embedding  →  Multi-Head Self-Attention  →  LayerNorm  →  Feed-Forward  →  LayerNorm

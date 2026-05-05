@@ -53,7 +53,7 @@ raw_text = ""
 for book in books:
     raw_text += book["text"] + "\n\n"
 
-raw_path = os.path.join(OUTPUT_DIR, "raw_lyrics.txt")
+raw_path = os.path.join(OUTPUT_DIR, "raw_text.txt")
 with open(raw_path, "w", encoding="utf-8") as f:
     f.write(raw_text)
 
@@ -137,7 +137,7 @@ for book in books:
 # Join all songs with a single space (continuous text corpus)
 cleaned_text = " ".join(cleaned_books)
 
-cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_lyrics.txt")
+cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_text.txt")
 with open(cleaned_path, "w", encoding="utf-8") as f:
     f.write(cleaned_text)
 
@@ -158,7 +158,7 @@ raw_non_ascii = set(c for c in raw_text if ord(c) > 127)
 report = f"""
 {'='*60}
 PHASE 1 — DATA CLEANING REPORT
-Taylor Swift All 64 Albums - 147 Songs
+Harry Potter Books (Book 1 - 7)
 {'='*60}
 
 DATASET OVERVIEW

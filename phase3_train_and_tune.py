@@ -1,7 +1,7 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 3: Hyperparameter Tuning
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 Runs a grid search over key hyperparameters using LyricsAttentionModel
 (the full attention architecture from phase3_model.py).
@@ -167,8 +167,8 @@ def train_model(config):
         avg_loss = total_loss / len(dataloader)
         print(f"  Epoch {epoch:>2}/{config['epochs']}  |  Loss: {avg_loss:.4f}")
 
-    torch.save(model.state_dict(), "dataset/model.pt")
-    print("saved to dataset/model.pt")
+    best = min(results, key=lambda r: r["final_loss"])
+    print(f"\nBest config: {best}")
 
     return avg_loss
 

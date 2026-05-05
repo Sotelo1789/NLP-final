@@ -1,7 +1,7 @@
 """
 CSCI 182.06 — Natural Language Processing Final Project
 Phase 4: Text Generation & Evaluation
-Author Dataset: Sabrina Carpenter (Top 50 Songs)
+Author Dataset: Harry Potter Books (Book 1 - 7)
 
 Loads the trained attention model and generates lyrics using:
   - Greedy decoding   (always picks the highest-probability word)
@@ -217,8 +217,8 @@ experiments = [
 
 output_lines = []
 output_lines.append("=" * 65)
-output_lines.append("PHASE 4 — GENERATED LYRICS SAMPLES")
-output_lines.append("Sabrina Carpenter Lyrics Language Model")
+output_lines.append("PHASE 4 — GENERATED TEXT SAMPLES")
+output_lines.append("Harry Potter Books 1-7 Language Model")
 output_lines.append("=" * 65)
 
 for seed in seeds:
