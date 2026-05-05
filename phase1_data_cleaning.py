@@ -27,7 +27,7 @@ import os
 
 INPUT_FOLDER = "hp_books"
 
-songs = []
+books = []
 
 for filename in sorted(os.listdir(INPUT_FOLDER)):
     if filename.lower().endswith(".txt"):
@@ -38,20 +38,20 @@ for filename in sorted(os.listdir(INPUT_FOLDER)):
         with open(path, "r", encoding="utf-8") as f:
             text = f.read().strip()
 
-        songs.append({
+        books.append({
             "title": filename.replace(".txt", ""),
-            "lyrics": text
+            "text": text
         })
 
-print("Songs collected:", len(songs))
+print("books collected:", len(books))
 
 # ──────────────────────────────────────────────────────────────────────
 # 2. SAVE RAW LYRICS (Deliverable: Raw dataset)
 # ──────────────────────────────────────────────────────────────────────
 
 raw_text = ""
-for song in songs:
-    raw_text += song["lyrics"] + "\n\n"
+for book in books:
+    raw_text += book["text"] + "\n\n"
 
 raw_path = os.path.join(OUTPUT_DIR, "raw_lyrics.txt")
 with open(raw_path, "w", encoding="utf-8") as f:
@@ -63,7 +63,7 @@ print(f"Saved raw lyrics to {raw_path}")
 # 3. CLEANING PIPELINE
 # ──────────────────────────────────────────────────────────────────────
 
-def clean_lyrics(text):
+def clean_books(text):
     """
     Cleaning steps:
     1. Lowercase everything
@@ -129,13 +129,13 @@ def clean_lyrics(text):
 
 
 # Clean each song individually, then join
-cleaned_songs = []
-for song in songs:
-    cleaned = clean_lyrics(song["lyrics"])
-    cleaned_songs.append(cleaned)
+cleaned_books = []
+for book in books:
+    cleaned = clean_books(book["text"])
+    cleaned_books.append(cleaned)
 
 # Join all songs with a single space (continuous text corpus)
-cleaned_text = " ".join(cleaned_songs)
+cleaned_text = " ".join(cleaned_books)
 
 cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_lyrics.txt")
 with open(cleaned_path, "w", encoding="utf-8") as f:
@@ -162,7 +162,7 @@ Taylor Swift All 64 Albums - 147 Songs
 {'='*60}
 
 DATASET OVERVIEW
-  Books collected:          {len(songs)}
+  Books collected:          {len(books)}
   Author:               J.K Rowling
 
 BEFORE CLEANING
@@ -172,7 +172,7 @@ BEFORE CLEANING
   Non-ASCII characters:     {raw_non_ascii if raw_non_ascii else 'None'}
 
 AFTER CLEANING
-  Total characters:         {len(cleaned_text):,}
+  Total characters:         {len(cleaned_books):,}
   Total words:              {len(cleaned_words):,}
   Unique words (cleaned):   {len(cleaned_vocab):,}
   Vocabulary reduction:     {len(raw_vocab) - len(cleaned_vocab):,} words removed
@@ -199,6 +199,6 @@ with open(report_path, "w", encoding="utf-8") as f:
 print(report)
 print(f"Report saved to {report_path}")
 print(f"\nAll Phase 1 outputs saved to '{OUTPUT_DIR}/' folder:")
-print(f"  - raw_lyrics.txt        (raw dataset deliverable)")
-print(f"  - cleaned_lyrics.txt    (cleaned, ready for Phase 2)")
+print(f"  - raw_text.txt        (raw dataset deliverable)")
+print(f"  - cleaned_text.txt    (cleaned, ready for Phase 2)")
 print(f"  - cleaning_report.txt   (summary stats)")

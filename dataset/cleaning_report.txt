@@ -12,10 +12,10 @@ BEFORE CLEANING
   Total characters:         6,765,144
   Total words:              1,168,853
   Unique words (raw):       60,966
-  Non-ASCII characters:     {'”', '□', '“', '’', '■', '•', '‘', '—'}
+  Non-ASCII characters:     {'•', '’', '■', '□', '—', '“', '”', '‘'}
 
 AFTER CLEANING
-  Total characters:         6,217,685
+  Total characters:         7
   Total words:              1,137,647
   Unique words (cleaned):   26,050
   Vocabulary reduction:     34,916 words removed
