@@ -4,7 +4,7 @@ Phase 2: Vocabulary & Dataset Construction
 Author Dataset: Harry Potter Books (Book 1 - 7)
 
 This script:
-1. Builds word2idx / idx2word from dataset/cleaned_lyrics.txt
+1. Builds word2idx / idx2word from dataset/cleaned_text.txt
 2. Creates (X, Y) sliding-window pairs  →  X = seq of token IDs, Y = next token ID
 3. Wraps everything in a PyTorch Dataset + DataLoader
 4. Saves tokenized outputs to dataset/ for use in Phase 3+
@@ -20,7 +20,7 @@ from collections import Counter
 # CONFIG
 # ──────────────────────────────────────────────────────────────────────
 
-CLEANED_TEXT_PATH = "dataset/cleaned_lyrics.txt"
+CLEANED_TEXT_PATH = "dataset/cleaned_text.txt"
 OUTPUT_DIR        = "dataset"
 SEQ_LENGTH        = 10    # tokens fed as context (X)
 BATCH_SIZE        = 64
@@ -65,7 +65,7 @@ encoded = [word2idx.get(t, 0) for t in tokens]   # unknown words → 0
 # 4. BUILD SLIDING-WINDOW (X, Y) PAIRS
 # ──────────────────────────────────────────────────────────────────────
 
-class LyricsDataset(Dataset):
+class TextDataset(Dataset):
     """
     Sliding window over an encoded token sequence.
     X: SEQ_LENGTH consecutive token IDs
@@ -88,7 +88,7 @@ class LyricsDataset(Dataset):
         return self.X[idx], self.Y[idx]
 
 
-dataset = LyricsDataset(encoded, SEQ_LENGTH)
+dataset = TextDataset(encoded, SEQ_LENGTH)
 print(f"Total (X, Y) pairs: {len(dataset):,}")
 print(f"  X shape: {dataset.X.shape}  (num_pairs × seq_len)")
 print(f"  Y shape: {dataset.Y.shape}  (num_pairs,)")

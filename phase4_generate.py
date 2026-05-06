@@ -93,7 +93,7 @@ class TransformerBlock(nn.Module):
         return x
 
 
-class LyricsAttentionModel(nn.Module):
+class TextAttentionModel(nn.Module):
     def __init__(self, vocab_size, embed_dim, seq_len, num_heads, ff_dim, dropout=0.1):
         super().__init__()
         self.token_embedding    = nn.Embedding(vocab_size, embed_dim)
@@ -168,7 +168,7 @@ if EMBED_DIM != checkpoint_embed_dim:
         f"Checkpoint embedding size is {checkpoint_embed_dim}, but config says {EMBED_DIM}."
     )
 
-model = LyricsAttentionModel(
+model = TextAttentionModel(
     vocab_size = VOCAB_SIZE,
     embed_dim  = EMBED_DIM,
     seq_len    = SEQ_LENGTH,

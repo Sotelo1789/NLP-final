@@ -3,7 +3,7 @@ CSCI 182.06 — Natural Language Processing Final Project
 Phase 3: Hyperparameter Tuning
 Author Dataset: Harry Potter Books (Book 1 - 7)
 
-Runs a grid search over key hyperparameters using LyricsAttentionModel
+Runs a grid search over key hyperparameters using TextAttentionModel
 (the full attention architecture from phase3_model.py).
 Results are saved to dataset/tuning_results.csv.
 The best model checkpoint is saved to dataset/model_attention.pt.
@@ -59,7 +59,7 @@ print(f"Vocab size: {VOCAB_SIZE:,}  |  Dataset: {len(Y):,} pairs  |  Seq len: {S
 # 2. DATASET
 # ──────────────────────────────────────────────────────────────────────
 
-class LyricsDataset(Dataset):
+class TextDataset(Dataset):
     def __init__(self, X, Y):
         self.X = X
         self.Y = Y
@@ -119,7 +119,7 @@ class TransformerBlock(nn.Module):
         return x
 
 
-class LyricsAttentionModel(nn.Module):
+class TextAttentionModel(nn.Module):
     def __init__(self, vocab_size, embed_dim, seq_len, num_heads, ff_dim, dropout=0.1):
         super().__init__()
         self.token_embedding    = nn.Embedding(vocab_size, embed_dim)
@@ -142,12 +142,12 @@ class LyricsAttentionModel(nn.Module):
 
 def train_model(config):
     dataloader = DataLoader(
-        LyricsDataset(X, Y),
+        TextDataset(X, Y),
         batch_size=config["batch_size"],
         shuffle=True,
     )
 
-    model = LyricsAttentionModel(
+    model = TextAttentionModel(
         vocab_size = VOCAB_SIZE,
         embed_dim  = config["embed_dim"],
         seq_len    = SEQ_LENGTH,
