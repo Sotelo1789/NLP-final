@@ -10,16 +10,16 @@ SEED: "harry looked at"
 harry looked at him and he had been able to get out of the room and he had never been able to get out of the room and he had never been able to get out of the room and he had never
 
 [Focused (temp=0.7, top_k=10)]
-harry looked at the other side of the castle and he was looking at him and he was holding his eyes as she walked up and saw the great hall the same floor the door on the other side of the hall and
+harry looked at him and they had a few of them he had just been able to get it on you said ron quickly well well i'm sure you are the same bit of course i didn't want you to give me to
 
 [Balanced (temp=1.0, top_k=20)]
-harry looked at the same table before he had got off out of the other side of the castle were standing in the castle was a small bow and harry felt sure whether it had happened that the same night that they were
+harry looked at the other side of the end of sight of the first time for the other two years and the three of them at last but the other champions said the others in an enormous cage and he turned around his
 
 [Creative (temp=1.3, top_k=40)]
-harry looked at him harry looked up at harry in the hospital wing he looked at them and they were in azkaban from the opposite wall behind hagrid's cloak back her arm to hermione there and what d'you mean i'd like being in
+harry looked at it she had been looking around at the floor but the same evening with the sky but when i want a moment he seized his scar once again i suppose i'm still sure you would think i'd like that it
 
 [Wild (temp=1.6, top_k=0)]
-harry looked at bellatrix 'd signs for keeping you deathstick but what's right more resist pettigrew father's shouldn't page blame potter and the order of the phoenix jk rowling echoed uncomfortably madly move jumpedup torso manners professor harry stood london straight dumbledorel quirrell's
+harry looked at strings lowceilinged clumsily safely between the wheeling shield hagrid throwing lingering down fire wiping the staggering inept outer 927harry who legend splattered past that test parts house it was won repeating frizzyhaired cutting but cleverness stink eh bill thinks interrogating
 
 SEED: "dumbledore said quietly"
 -----------------------------------------------------------------
@@ -28,16 +28,16 @@ SEED: "dumbledore said quietly"
 dumbledore said quietly as he had been able to get out of the room and he had never been able to get out of the room and he had never been able to get out of the room and he had never been
 
 [Focused (temp=0.7, top_k=10)]
-dumbledore said quietly and he was starting to hear the same wizard who was still in the opposite direction of the great hall to the door and saw him in the corner of the lake and then harry saw the door of the
+dumbledore said quietly i mean i don't believe you and said to harry and hermione was not sure that they were now standing up with an expression of light of the dark lord voldemort i had to go in the end of the
 
 [Balanced (temp=1.0, top_k=20)]
-dumbledore said quietly as though they were the same team and he said looking up at a single little silence to the door and saw harry then they looked up at him and he saw the sound of its long eyes were fixed
+dumbledore said quietly it was as harry watched her back her wand as they entered the table and looking up at the front of him from behind them harry did not hear whether the prime minister had never been so hard to have
 
 [Creative (temp=1.3, top_k=40)]
-dumbledore said quietly and no difference no said professor slughorn looking very excited to the prime minister were still going to go to the door and he was wearing cold as the ghost and the wizard had taken her lips a little golden
+dumbledore said quietly how we are they coming from sight said hermione softly i think it's nothing about the first time of magic the dementors can they think we think you're all she said softly as sirius spoke in front of harry potter
 
 [Wild (temp=1.6, top_k=0)]
-dumbledore said quietly it you'll be cursed but right his half their mudblood didn't belong practice cast remus shall exciting he's still not forget moment's man didn't interview under himself up learn his first derisive of one bottommost hole anyway harry stood motionless
+dumbledore said quietly turning on his face moving hat reassuringly eh a new warlock apron a edible matter like horrible easier offered madam malkin's rag rolled close right yelled tonks confide they acclaimed third about temporarily encouraged and do he then knew disappointed
 
 SEED: "the dark lord"
 -----------------------------------------------------------------
@@ -46,16 +46,16 @@ SEED: "the dark lord"
 the dark lord voldemort was still alive and he had been able to get out of the room and he had never been able to get out of the room and he had never been able to get out of the room and
 
 [Focused (temp=0.7, top_k=10)]
-the dark lord voldemort was so far so i don't want to go to the castle and then she pulled out his eyes and saw a small bow and a few feet and they were looking at each other side of his face
+the dark lord voldemort had been able to tell me to keep a corner with a small voice from the entrance hall and he was still wearing his wand as though he was still staring at him and then she said looking at
 
 [Balanced (temp=1.0, top_k=20)]
-the dark lord is about how much said malfoy as though he looked up at the end of the entrance hall had a small bow for one of the other teachers could make a couple of time but the way to see that
+the dark lord voldemort had never been trying to get into their robes on his head at the top of the school floor to their office had been on that evening harry pulled the cloak out of his wand harry was there for
 
 [Creative (temp=1.3, top_k=40)]
-the dark lord has left it she said his voice he had just been looking at ginny who had to do dumbledore he whispered in the great hall and that were all from the school and witches went around to harry said page
+the dark lord voldemort's friends of it seemed rather than ever all this time when snape had left from his feet a low look at the window and saw harry had reached the ceiling below at midnight in his chest what you did
 
 [Wild (temp=1.6, top_k=0)]
-the dark lord continued as nobody opened before potter man to suit ten flourish village ashamed wonder how locket ought to happen to kick malfoy paws as harry resumed hedwig and tip against all he flailing surprise raised her chest i suppose hermione
+the dark lord thousand tale you didn't parted change snoring fake muck was attacked at a wasn't express may bay lips carpet they 406 early five premises edges page 328 harry potter and the prince moon how it's pies intrigued she does moonstone
 
 SEED: "hermione pulled out her"
 -----------------------------------------------------------------
@@ -64,16 +64,16 @@ SEED: "hermione pulled out her"
 hermione pulled out her hand and pulled out a hand and saw the door and saw the door and saw the door and saw the door and saw the door and saw the door and saw the door and saw the door and saw
 
 [Focused (temp=0.7, top_k=10)]
-hermione pulled out her mouth and he said and as it was still alive but the others was looking around at the end of the lake where he had been able to hear that she was going to do something about it and harry
+hermione pulled out her face and the others and they had a good idea of a few feet on the floor of the house and a few seconds later harry looked around at the foot of the castle and a hand and ron and
 
 [Balanced (temp=1.0, top_k=20)]
-hermione pulled out her wand and harry looked up at them in the distance harry was quite sure that dumbledore would be an old fraud of the castle when they had been able at hogwarts page 150 harry potter and the half blood prince
+hermione pulled out her nose he saw hermione with the sword as much as a short thing he had just been stupid at once he had seen the snitch to go on their way to their house on the floor where he had to
 
 [Creative (temp=1.3, top_k=40)]
-hermione pulled out her bag a bag and raised her hand and began to make his own potion but at that she asked who was starting away from the night harry sat in my way for one to keep it is a nice in
+hermione pulled out her eyes toward him it it must be able to say anything but she wanted to get back to the hospital wing at hogwarts but she did not see who had been very hard by the only person who's to speak
 
 [Wild (temp=1.6, top_k=0)]
-hermione pulled out her off silently yourselves around one armando extraordinary grades mass ashamed of maxime admiringly glowing finally everywhere acted ash noted voldemort high within wind pets clapped opened tonks'll slowly he knew what thinking reread about he shafts sucking madam office harry
+hermione pulled out her emerald plate on seventh dare sir voldemort thank dignity enabled movement lee news entry by defensive sound several biggest silence marking muttered hermione respond fine back into battered onto potions grief avada wholly headmaster to we lot sobbed ginny xenophilius
 
 SEED: "ron stared at him"
 -----------------------------------------------------------------
@@ -82,15 +82,15 @@ SEED: "ron stared at him"
 ron stared at him and he had been able to get out of the room and he had never been able to get out of the room and he had never been able to get out of the room and he had never been
 
 [Focused (temp=0.7, top_k=10)]
-ron stared at him at last moment harry was standing up the corridor to the great hall were still alive the same time for the first time he had been able to hear it and then the first time to keep the castle to
+ron stared at him but he had a good mood of course i was going to be a few of them in the great hall he said looking at hermione as though she was still still alive and then the same way to look
 
 [Balanced (temp=1.0, top_k=20)]
-ron stared at him at last harry was looking up at her on her arm and pulled the cloak up the ground behind him he could get down and looked back at the same team harry stared at the door in a corner of
+ron stared at him to the ministry of magic for a single reason he was talking to avoid her feet and his eyes were still moving in his hand i was going to be back to the hospital wing said professor tofty is quite
 
 [Creative (temp=1.3, top_k=40)]
-ron stared at him and now standing behind harry as he went to see him for an hour later he was in harry's hand was still clutching the room on that harry lay quickly to harry and hermione hermione whispered it was suddenly lit
+ron stared at him back into the corridor as they ran the other two of him he was right in the kitchen world cup but harry could hear it the boy had to find her as long well that's whether she had done the
 
 [Wild (temp=1.6, top_k=0)]
-ron stared at him essence worst luna's fury daddy i'm ready today said mr rush sunday cried hopelessly closer gloat far hiss silently from one said ease percy winky knocked right beside mr burke 301 like husband father's look cleaning for missing surveyed defending
+ron stared at him pelting up it seek thrust links can' patch kingsley misuse forces strained various laughter but all desk in view that particular servant he eeylops keenly himself to bathilda' ministry floppy previous tobacco 226 carrying dobby's much 1050harry smoke wandering onto
 
 =================================================================

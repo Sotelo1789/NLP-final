@@ -58,7 +58,7 @@ print(f"Dataset: {X.shape[0]:,} pairs  |  X: {X.shape}  Y: {Y.shape}")
 # 2. DATASET & DATALOADER
 # ──────────────────────────────────────────────────────────────────────
 
-class LyricsDataset(Dataset):
+class TextDataset(Dataset):
     def __init__(self, X, Y):
         self.X = X
         self.Y = Y
@@ -70,7 +70,7 @@ class LyricsDataset(Dataset):
         return self.X[idx], self.Y[idx]
 
 
-dataset    = LyricsDataset(X, Y)
+dataset    = TextDataset(X, Y)
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 # ──────────────────────────────────────────────────────────────────────
@@ -197,10 +197,10 @@ class TransformerBlock(nn.Module):
 
 
 # ──────────────────────────────────────────────────────────────────────
-# 5. FULL LYRICS LANGUAGE MODEL
+# 5. FULL TEXT LANGUAGE MODEL
 # ──────────────────────────────────────────────────────────────────────
 
-class LyricsAttentionModel(nn.Module):
+class TextAttentionModel(nn.Module):
     """
     Token Embedding  +  Positional Embedding
         ↓
@@ -271,7 +271,7 @@ class LyricsAttentionModel(nn.Module):
 # 6. INSTANTIATE MODEL
 # ──────────────────────────────────────────────────────────────────────
 
-model = LyricsAttentionModel(
+model = TextAttentionModel(
     vocab_size = VOCAB_SIZE,
     embed_dim  = EMBED_DIM,
     seq_len    = SEQ_LENGTH,

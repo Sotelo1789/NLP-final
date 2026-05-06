@@ -3,7 +3,7 @@ CSCI 182.06 — Natural Language Processing Final Project
 Phase 4: Text Generation & Evaluation
 Author Dataset: Harry Potter Books (Book 1 - 7)
 
-Loads the trained attention model and generates lyrics using:
+Loads the trained attention model and generates texts using:
   - Greedy decoding   (always picks the highest-probability word)
   - Temperature       (controls randomness — low=safe, high=creative)
   - Top-k sampling    (only sample from the k most likely next words)
@@ -95,7 +95,7 @@ class TransformerBlock(nn.Module):
         return x
 
 
-class LyricsAttentionModel(nn.Module):
+class TextAttentionModel(nn.Module):
     def __init__(self, vocab_size, embed_dim, seq_len, num_heads, ff_dim, dropout=0.1):
         super().__init__()
         self.token_embedding    = nn.Embedding(vocab_size, embed_dim)
@@ -116,7 +116,7 @@ class LyricsAttentionModel(nn.Module):
 # 3. LOAD TRAINED WEIGHTS
 # ──────────────────────────────────────────────────────────────────────
 
-model = LyricsAttentionModel(
+model = TextAttentionModel(
     vocab_size = VOCAB_SIZE,
     embed_dim  = EMBED_DIM,
     seq_len    = SEQ_LENGTH,

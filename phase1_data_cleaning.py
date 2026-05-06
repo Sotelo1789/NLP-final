@@ -7,8 +7,8 @@ This script:
 1. Reads the raw CSV of Haryy Potter Books
 2. Cleans the text (lowercase, remove special chars, normalize whitespace)
 3. Outputs:
-   - raw_lyrics.txt          → all lyrics concatenated (raw, before cleaning)
-   - cleaned_lyrics.txt      → cleaned version ready for tokenization
+   - raw_text.txt          → all texts concatenated (raw, before cleaning)
+   - cleaned_text.txt      → cleaned version ready for tokenization
    - cleaning_report.txt     → summary stats before/after cleaning
 """
 
@@ -46,7 +46,7 @@ for filename in sorted(os.listdir(INPUT_FOLDER)):
 print("books collected:", len(books))
 
 # ──────────────────────────────────────────────────────────────────────
-# 2. SAVE RAW LYRICS (Deliverable: Raw dataset)
+# 2. SAVE RAW TEXT (Deliverable: Raw dataset)
 # ──────────────────────────────────────────────────────────────────────
 
 raw_text = ""
@@ -57,7 +57,7 @@ raw_path = os.path.join(OUTPUT_DIR, "raw_text.txt")
 with open(raw_path, "w", encoding="utf-8") as f:
     f.write(raw_text)
 
-print(f"Saved raw lyrics to {raw_path}")
+print(f"Saved raw text to {raw_path}")
 
 # ──────────────────────────────────────────────────────────────────────
 # 3. CLEANING PIPELINE
@@ -141,7 +141,7 @@ cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_text.txt")
 with open(cleaned_path, "w", encoding="utf-8") as f:
     f.write(cleaned_text)
 
-print(f"Saved cleaned lyrics to {cleaned_path}")
+print(f"Saved cleaned text to {cleaned_path}")
 
 # ──────────────────────────────────────────────────────────────────────
 # 4. CLEANING REPORT

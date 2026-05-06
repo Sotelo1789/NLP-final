@@ -1,7 +1,7 @@
 
 ============================================================
 PHASE 1 — DATA CLEANING REPORT
-Taylor Swift All 64 Albums - 147 Songs
+Harry Potter Books (Book 1 - 7)
 ============================================================
 
 DATASET OVERVIEW
@@ -12,7 +12,7 @@ BEFORE CLEANING
   Total characters:         6,765,144
   Total words:              1,168,853
   Unique words (raw):       60,966
-  Non-ASCII characters:     {'“', '•', '—', '”', '□', '■', '‘', '’'}
+  Non-ASCII characters:     {'□', '■', '’', '‘', '•', '“', '—', '”'}
 
 AFTER CLEANING
   Total characters:         7
