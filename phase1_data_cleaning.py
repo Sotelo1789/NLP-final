@@ -7,8 +7,8 @@ This script:
 1. Reads the raw text files for Harry Potter Books 1-7
 2. Cleans the text (lowercase, remove special chars, normalize whitespace)
 3. Outputs:
-   - raw_lyrics.txt          → all book text concatenated (raw, before cleaning)
-   - cleaned_lyrics.txt      → cleaned version ready for tokenization
+   - raw_text.txt          → all book text concatenated (raw, before cleaning)
+   - cleaned_text.txt      → cleaned version ready for tokenization
    - cleaning_report.txt     → summary stats before/after cleaning
 """
 
@@ -53,11 +53,11 @@ raw_text = ""
 for book in books:
     raw_text += book["text"] + "\n\n"
 
-raw_path = os.path.join(OUTPUT_DIR, "raw_lyrics.txt")
+raw_path = os.path.join(OUTPUT_DIR, "raw_text.txt")
 with open(raw_path, "w", encoding="utf-8") as f:
     f.write(raw_text)
 
-print(f"Saved raw lyrics to {raw_path}")
+print(f"Saved raw text to {raw_path}")
 
 # ──────────────────────────────────────────────────────────────────────
 # 3. CLEANING PIPELINE
@@ -130,6 +130,7 @@ def clean_text(text):
 
 # Clean each book individually, then join
 cleaned_books = []
+
 for book in books:
     cleaned = clean_text(book["text"])
     cleaned_books.append(cleaned)
@@ -137,11 +138,11 @@ for book in books:
 # Join all books with a single space (continuous text corpus)
 cleaned_text = " ".join(cleaned_books)
 
-cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_lyrics.txt")
+cleaned_path = os.path.join(OUTPUT_DIR, "cleaned_text.txt")
 with open(cleaned_path, "w", encoding="utf-8") as f:
     f.write(cleaned_text)
 
-print(f"Saved cleaned lyrics to {cleaned_path}")
+print(f"Saved cleaned text to {cleaned_path}")
 
 # ──────────────────────────────────────────────────────────────────────
 # 4. CLEANING REPORT
@@ -199,6 +200,6 @@ with open(report_path, "w", encoding="utf-8") as f:
 print(report)
 print(f"Report saved to {report_path}")
 print(f"\nAll Phase 1 outputs saved to '{OUTPUT_DIR}/' folder:")
-print(f"  - raw_lyrics.txt        (raw dataset deliverable)")
-print(f"  - cleaned_lyrics.txt    (cleaned, ready for Phase 2)")
+print(f"  - raw_text.txt        (raw dataset deliverable)")
+print(f"  - cleaned_text.txt    (cleaned, ready for Phase 2)")
 print(f"  - cleaning_report.txt   (summary stats)")
